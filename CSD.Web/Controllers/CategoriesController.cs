@@ -20,6 +20,24 @@ namespace CSD.Web.Controllers
             return View(categories);
         }
 
+
+        // GET: Categories/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id is null)
+            {
+                return NotFound();
+            }
+            var category = _db.Categories.FirstOrDefault(m => m.Id == id);
+            if (category is null)
+            {
+                return NotFound();
+            }
+
+            return View(category);
+        }
+
+
     }
 
 
