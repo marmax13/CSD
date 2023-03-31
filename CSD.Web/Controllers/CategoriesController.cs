@@ -1,6 +1,7 @@
 ﻿using CSD.Web.Data;
 using CSD.Web.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CSD.Web.Controllers
 {
@@ -36,6 +37,31 @@ namespace CSD.Web.Controllers
 
             return View(category);
         }
+
+
+        // GET: Categories/Create
+        public IActionResult Create()
+        {
+            ViewBag.Categories = new SelectList(_db.Categories.Where(x => x.ParentId == 0), "Id", "Name");
+            return View();
+        }
+
+
+        // POST: Categories/Create
+        [HttpPost]
+        public IActionResult Create(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Add(category);
+                _db.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(category);
+        }
+
+
+
 
 
     }
