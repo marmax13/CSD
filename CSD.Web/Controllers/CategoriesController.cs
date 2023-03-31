@@ -12,18 +12,13 @@ namespace CSD.Web.Controllers
         {
             _db = db;
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
-
+        
         // GET: /Categories/Index
         public ActionResult Index()
         {
             IEnumerable<Category> categories = _db.Categories.ToList();
             return View(categories);
         }
-
 
     }
 
