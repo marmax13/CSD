@@ -13,12 +13,7 @@ public class CSDContext : DbContext
 
     public DbSet<Post> Posts { get; set; }
 
-    private readonly CSDContext _db;
-
-    public CategoriesController(CSDContext db)
-    {
-        _db = db;
-    }
+    
 
 
 }
